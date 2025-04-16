@@ -8,7 +8,16 @@ import esbuild from 'esbuild';
 import { ssr } from './ssr.js';
 import pth from './pth.js';
 
+/** @type {Object<string, {type: string, content: string}>} */
+const cache = Object.create(null);
+
 const httpServer = http.createServer(async (req, res) => {
+
+  if (CFG.cache && cache[req.url]) {
+    res.setHeader('Content-Type', cache[req.url].type);
+    res.end(cache[req.url].content);
+    return;
+  }
 
   console.log(`🚀 ${req.method} ${req.url}`);
 
@@ -25,6 +34,12 @@ const httpServer = http.createServer(async (req, res) => {
     res.end('Unsupported request method: ' + req.method);
     return;
   }
+
+  let respond = (type, content) => {
+    cache[req.url] = { type, content };
+    res.setHeader('Content-Type', type);
+    res.end(content);
+  };
 
   /** @type {Object<string, string>} */
   let ssrData = {};
@@ -54,8 +69,7 @@ const httpServer = http.createServer(async (req, res) => {
       res.end(js);
     } catch (err) {
       console.log(err);
-      res.setHeader('Content-Type', 'text/plain');
-      res.end('JS BUNDLE ERROR');
+      respond('text/plain', 'JS BUNDLE ERROR');
     }
     return;
   } else if (fileName === 'index.css') { 
@@ -72,8 +86,7 @@ const httpServer = http.createServer(async (req, res) => {
       res.end(css);
     } catch (err) {
       console.log(err);
-      res.setHeader('Content-Type', 'text/plain');
-      res.end('CSS BUNDLE ERROR');
+      respond('text/plain', 'CSS BUNDLE ERROR');
     }
     return;
   } else if (req.url.split('/index.')[1]?.includes('.js')) {
@@ -81,23 +94,19 @@ const httpServer = http.createServer(async (req, res) => {
     try {
       let fileExt = req.url.split('/index.')[1].split('.js')[0].split('?')[0].toLowerCase();
       let fileTxt = (await import(pth(req.url) + '?' + Date.now())).default;
-      res.setHeader('Content-Type', MIME_TYPES[fileExt]);
-      res.end(await ssr(fileTxt, CFG.ssrComponents.templates, ssrData));
+      respond(MIME_TYPES[fileExt], await ssr(fileTxt, CFG.ssrComponents.templates, ssrData));
     } catch (err) {
       console.log(err);
-      res.setHeader('Content-Type', 'text/plain');
-      res.end('DWA IMPORT ERROR');
+      respond('text/plain', 'DWA IMPORT ERROR');
     }
     return;
   } else if (Object.keys(MIME_TYPES).find(type => req.url.includes('.' + type))) { 
     // Handle other static files:
     if (fs.existsSync('.' + req.url)) {
       let file = fs.readFileSync('.' + req.url);
-      res.setHeader('Content-Type', MIME_TYPES[req.url.split('.')[1].split('?')[0].toLowerCase()]);
-      res.end(file);
+      respond(MIME_TYPES[req.url.split('.')[1].split('?')[0].toLowerCase()], file);
     } else {
-      res.setHeader('Content-Type', 'text/plain');
-      res.end('404');
+      respond('text/plain', '404');
     }
     return;
   }
@@ -111,17 +120,14 @@ const httpServer = http.createServer(async (req, res) => {
   if (routes[route]) {
     try {
       let html = (await import(pth(routes[route]) + '?' + Date.now())).default;
-      res.setHeader('Content-Type', 'text/html');
-      res.end(htmlMin(await ssr(html, CFG.ssrComponents.templates, ssrData)));
+      respond('text/html', htmlMin(await ssr(html, CFG.ssrComponents.templates, ssrData)));
     } catch (err) {
       console.log(err);
-      res.setHeader('Content-Type', 'text/plain');
-      res.end('DWA IMPORT ERROR');
+      respond('text/plain', 'DWA IMPORT ERROR');
       return;
     }
   } else {
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('ERROR');
+    respond('text/plain', 'ERROR');
   }
 });
 
