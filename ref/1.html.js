@@ -4,6 +4,7 @@ export default /*html*/`
 {[importMap]}
 <base href="./ref/">
 <script src="./app/index.js" type="module"></script>
-<div>${await md('./README.md')}</div>
+<link rel="stylesheet" href="./css/index.css">
+<div doc>${await md('./README.md')}</div>
 <test-wc></test-wc>
 `;
