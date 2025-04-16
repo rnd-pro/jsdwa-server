@@ -4,7 +4,7 @@
 
 ### What is JSDWA?
 
-**JSDWA** (Java Script Distributed Web Assets) is a modern approach that leverages JavaScript and JavaScript Template Literals to create a powerful web asset serving system. It provides a PHP-like templating experience with enhanced capabilities and modern JavaScript features.
+**JSDWA** (Java Script Distributed Web Assets) is a modern approach that leverages JavaScript and JavaScript Template Literals to create a powerful web asset serving system. It provides a PHP-like templating experience with enhanced capabilities and modern JavaScript features, supporting multiple web application architectures.
 
 ### Core Features
 
@@ -13,8 +13,9 @@
 - **Server-Side Rendering**: Built-in SSR support for Custom Elements
 - **Performance Optimized**: Fast in-memory cache for production usage
 - **Isomorphic Code**: Full-stack DRY support with shared code between client and server
-- **Modern Dependencies**: Automated importmap generation based on package.json
+- **Modern Dependency Management**: Automated importmap generation based on package.json and your endpoints structure
 - **Platform Standards**: Modern web standards usage without legacy dependencies
+- **Hybrid Web App Model Support**: Seamlessly combine SSR, SPA, micro-frontends, and on-demand dynamic components without complex configurations
 
 ### Installation
 
