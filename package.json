@@ -1,5 +1,5 @@
 {
-  "name": "dwa-server",
+  "name": "jsdwa-server",
   "version": "0.0.1",
   "main": "index.js",
   "type": "module",
@@ -7,11 +7,13 @@
     "test": "test"
   },
   "keywords": [
-    "dwa"
+    "jsdwa",
+    "dwa",
+    "jsdwa-server"
   ],
   "author": "team@rnd-pro.com",
   "license": "MIT",
-  "description": "",
+  "description": "JSDWA Server",
   "dependencies": {
     "@jam-do/jam-tools": "^0.2.3",
     "@symbiotejs/symbiote": "^2.3.2",
