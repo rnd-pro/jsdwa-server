@@ -1,0 +1,21 @@
+{
+  "name": "dwa-server",
+  "version": "0.0.1",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "dwa"
+  ],
+  "author": "team@rnd-pro.com",
+  "license": "MIT",
+  "description": "",
+  "dependencies": {
+    "@jam-do/jam-tools": "^0.2.3",
+    "@symbiotejs/symbiote": "^2.3.2",
+    "chalk": "^5.4.1",
+    "esbuild": "^0.25.1"
+  }
+}
