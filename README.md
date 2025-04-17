@@ -10,12 +10,14 @@
 
 - **Web Asset Serving**: Serve JS string exports as any text-based web assets with appropriate MIME types (HTML, CSS, SVG, etc.)
 - **On-the-fly**: Build and minification for all assets
-- **Server-Side Rendering**: Built-in SSR support for Custom Elements
+- **Server-Side Rendering**: Built-in SSR support for native Custom Elements
 - **Performance Optimized**: Fast in-memory cache for production usage
 - **Isomorphic Code**: Full-stack DRY support with shared code between client and server
-- **Modern Dependency Management**: Automated importmap generation based on package.json and your endpoints structure
+- **Modern Dependency Management And Sharing**: Automated importmap generation based on package.json and your endpoints structure
 - **Platform Standards**: Modern web standards usage without legacy dependencies
 - **Hybrid Web App Model Support**: Seamlessly combine SSR, SPA, micro-frontends, and on-demand dynamic components without complex configurations
+- **Distributed Assets Model**: ESM over HTTPS support with direct URL access to application components
+- **Extensibility**: Add custom middleware to support your specific use cases
 
 ### Installation
 
