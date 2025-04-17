@@ -9,15 +9,17 @@
 ### Core Features
 
 - **Web Asset Serving**: Serve JS string exports as any text-based web assets with appropriate MIME types (HTML, CSS, SVG, etc.)
-- **On-the-fly**: Build and minification for all assets
+- **On-the-fly**: Build and minification for all assets. You don't need Webpack or that "yet-another-newer-hipster-thing" anymore
 - **Server-Side Rendering**: Built-in SSR support for native Custom Elements
 - **Performance Optimized**: Fast in-memory cache for production usage
 - **Isomorphic Code**: Full-stack DRY support with shared code between client and server
-- **Modern Dependency Management And Sharing**: Automated importmap generation based on package.json and your endpoints structure
+- **Modern Dependency Management**: Automated importmap generation based on package.json and your endpoints structure. Share the common code with ease
 - **Platform Standards**: Modern web standards usage without legacy dependencies
 - **Hybrid Web App Model Support**: Seamlessly combine SSR, SPA, micro-frontends, and on-demand dynamic components without complex configurations
 - **Distributed Assets Model**: ESM over HTTPS support with direct URL access to application components
 - **Extensibility**: Add custom middleware to support your specific use cases
+- **Flexible Styling**: Use JavaScript right in your styles, forget about additional pre- or post-processors for CSS and their creepy syntax. Use classic way styling or encapsulated Shadow DOM. Or use them both without any limitations
+- **SVG files are text assets too**: Make your SVG files dynamic as everything else
 
 ### Installation
 
@@ -50,15 +52,22 @@ node ./node_modules/jsdwa-server/src/index.js
 
 ### Configuration Options
 
-- `routes`: Path to your routes configuration file
-- `pageDataFn`: Path to your page data middleware function
-- `ssrComponents`: Configuration for server-side rendered components
-  - `templates`: Template path schema
-  - `scripts`: Component scripts path schema
-  - `styles`: Component styles path schema
-- `cache`: Enable/disable in-memory caching
-- `port`: Server port number
-- `importmap`: Enable/disable automatic importmap generation
+| Option | Description |
+|--------|-------------|
+| `routes` | Path to your routes configuration file |
+| `pageDataFn` | Path to your page data middleware function |
+| `ssrComponents` | Configuration for server-side rendered components |
+| `cache` | Enable/disable in-memory caching |
+| `port` | Server port number |
+| `importmap` | Enable/disable automatic importmap generation |
+
+#### SSR Components Configuration
+
+| Option | Description |
+|--------|-------------|
+| `templates` | Template path schema |
+| `scripts` | Component scripts path schema |
+| `styles` | Component styles path schema |
 
 ### Usage Examples
 
@@ -97,7 +106,7 @@ export default {
 
 ### Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
 
 ### License
 
