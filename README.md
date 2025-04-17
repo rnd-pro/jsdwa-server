@@ -45,13 +45,13 @@ export default {
 
 2. Start the server:
 ```bash
-node src/index.js
+node ./node_modules/jsdwa-server/src/index.js
 ```
 
 ### Configuration Options
 
 - `routes`: Path to your routes configuration file
-- `pageDataFn`: Path to your page data function
+- `pageDataFn`: Path to your page data middleware function
 - `ssrComponents`: Configuration for server-side rendered components
   - `templates`: Template path schema
   - `scripts`: Component scripts path schema
@@ -95,23 +95,6 @@ export default {
 };
 ```
 
-### Development
-
-The server includes:
-- Hot reloading for development
-- Automatic bundling and minification
-- MIME type detection
-- CORS support
-- Error handling and logging
-
-### Production
-
-For production deployment:
-1. Enable caching in `project.cfg.js`
-2. Set appropriate environment variables
-3. Use a process manager like PM2
-4. Configure your reverse proxy if needed
-
 ### Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
@@ -122,4 +105,4 @@ MIT
 
 ### Authors
 
-rnd-pro.com
+rnd-pro.com (team@rnd-pro.com)
