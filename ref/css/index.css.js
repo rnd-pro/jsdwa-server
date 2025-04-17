@@ -1,3 +1,4 @@
+export default /*css*/ `
 :root {
   --color-1: #272630;
   --color-2: #e4f1ff;
@@ -47,6 +48,10 @@ div[doc] {
   margin: 2rem auto;
 }
 
+a {
+  color: currentColor;
+}
+
 test-wc {
   display: block;
   padding: 1rem;
@@ -55,3 +60,4 @@ test-wc {
   max-width: var(--column-w);
   margin: 2rem auto;
 }
+`;

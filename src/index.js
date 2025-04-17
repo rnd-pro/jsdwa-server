@@ -93,7 +93,8 @@ const httpServer = http.createServer(async (req, res) => {
     // Handle any DWA:
     try {
       let fileExt = req.url.split('/index.')[1].split('.js')[0].split('?')[0].toLowerCase();
-      let fileTxt = (await import(pth(req.url) + '?' + Date.now())).default;
+      let dwaPath = pth(req.url, true);
+      let fileTxt = (await import(dwaPath + '?' + Date.now())).default;
       respond(MIME_TYPES[fileExt], await ssr(fileTxt, CFG.ssrComponents.templates, ssrData));
     } catch (err) {
       console.log(err);
