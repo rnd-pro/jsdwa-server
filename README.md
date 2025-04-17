@@ -22,7 +22,7 @@
 ### Installation
 
 ```bash
-npm install jsdwa-server
+npm install https://github.com/rnd-pro/jsdwa-server.git
 ```
 
 ### Quick Start
