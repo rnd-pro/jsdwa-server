@@ -41,8 +41,8 @@ code {
 }
 
 div[doc] {
-  padding: var(--gap-max);
-  background-color: rgba(255, 255, 255, .05);
+  padding: calc(var(--gap-max) * 2);
+  background-color: rgba(255, 255, 255, .01);
   border-radius: 0.5rem;
   max-width: var(--column-w);
   margin: 2rem auto;
@@ -50,6 +50,13 @@ div[doc] {
 
 a {
   color: currentColor;
+}
+
+td {
+  padding: 0.5rem;
+  background-color: rgba(255, 255, 255, .05);
+  border-radius: 0.2rem;
+  margin: 0.2rem;
 }
 
 test-wc {

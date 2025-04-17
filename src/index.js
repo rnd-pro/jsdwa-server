@@ -35,6 +35,8 @@ const httpServer = http.createServer(async (req, res) => {
     return;
   }
 
+  let params = CFG.cache ? '' : '?' + Date.now();
+
   let respond = (type, content) => {
     cache[req.url] = { type, content };
     res.setHeader('Content-Type', type);
@@ -94,7 +96,7 @@ const httpServer = http.createServer(async (req, res) => {
     try {
       let fileExt = req.url.split('/index.')[1].split('.js')[0].split('?')[0].toLowerCase();
       let dwaPath = pth(req.url, true);
-      let fileTxt = (await import(dwaPath + '?' + Date.now())).default;
+      let fileTxt = (await import(dwaPath + params)).default;
       respond(MIME_TYPES[fileExt], await ssr(fileTxt, CFG.ssrComponents.templates, ssrData));
     } catch (err) {
       console.log(err);
@@ -120,7 +122,7 @@ const httpServer = http.createServer(async (req, res) => {
   ssrData.importMap = importMap;
   if (routes[route]) {
     try {
-      let html = (await import(pth(routes[route]) + '?' + Date.now())).default;
+      let html = (await import(pth(routes[route]) + params)).default;
       respond('text/html', htmlMin(await ssr(html, CFG.ssrComponents.templates, ssrData)));
     } catch (err) {
       console.log(err);
