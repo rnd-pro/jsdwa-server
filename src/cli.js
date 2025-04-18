@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { createServer } from './index.js';
+import { createServer } from './JSDWAServer.js';
 
 // Parse command line arguments
 const args = process.argv.slice(2);
@@ -10,4 +10,4 @@ const options = {
 };
 
 // Start the server with the provided options
-createServer(options); 
+createServer(options);
