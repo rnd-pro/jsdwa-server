@@ -19,7 +19,7 @@
 - **Distributed Assets Model**: ESM over HTTPS support with direct URL access to application components
 - **Extensibility**: Add custom middleware to support your specific use cases
 - **Flexible Styling**: Use JavaScript right in your styles, forget about additional pre- or post-processors for CSS and their creepy syntax. Use classic way styling or encapsulated Shadow DOM. Or use them both without any limitations
-- **SVG files are text assets too**: Make your SVG files dynamic as everything else
+- **SVG as JSDWA**: Make your SVG-illustration images dynamic as everything else in your project
 
 ### Installation
 
@@ -45,10 +45,37 @@ export default {
 }
 ```
 
-2. Start the server:
-```bash
-node ./node_modules/jsdwa-server/src/index.js
-```
+2. Start the server using one of these methods:
+
+   a. Using the CLI (recommended):
+   ```bash
+   # Install globally
+   npm install -g .
+   
+   # Start with default settings
+   jsdwa
+   
+   # Start with custom port
+   jsdwa --port 8080
+   
+   # Start with caching enabled
+   jsdwa --cache
+   
+   # Start with both options
+   jsdwa --port 8080 --cache
+   ```
+
+   b. Using Node directly:
+   ```bash
+   node ./node_modules/jsdwa-server/src/index.js
+   ```
+
+### CLI Options
+
+| Option | Description |
+|--------|-------------|
+| `--port <number>` | Set the server port number |
+| `--cache` | Enable in-memory caching |
 
 ### Configuration Options
 
