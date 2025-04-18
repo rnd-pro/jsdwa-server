@@ -151,6 +151,6 @@ export function createServer(options = {}) {
 }
 
 // Check if this file is being run directly (not imported)
-if (process.argv[1]?.endsWith('index.js')) {
+if (process.argv.find(arg => arg.includes('index.js'))) {
   createServer();
 }
