@@ -20,7 +20,7 @@ export function createServer(options = {}) {
     CFG.port = options.port;
   }
 
-  const httpServer = http.createServer(async (req, res) => {
+  const DWAServer = http.createServer(async (req, res) => {
 
     if (CFG.cache && cache[req.url]) {
       res.setHeader('Content-Type', cache[req.url].type);
@@ -143,9 +143,9 @@ export function createServer(options = {}) {
     }
   });
 
-  httpServer.listen(CFG.port, () => {
+  DWAServer.listen(CFG.port, () => {
     console.log(`✅ HTTP server started: http://localhost:${CFG.port}`);
   });
 
-  return httpServer;
+  return DWAServer;
 }

@@ -47,28 +47,26 @@ export default {
 
 2. Start the server using one of these methods:
 
-   a. Using the CLI (recommended):
-   ```bash
-   # Install globally
-   npm install -g .
-   
-   # Start with default settings
-   jsdwa
-   
-   # Start with custom port
-   jsdwa --port 8080
-   
-   # Start with caching enabled
-   jsdwa --cache
-   
-   # Start with both options
-   jsdwa --port 8080 --cache
-   ```
+Using the CLI (recommended):
 
-   b. Using Node directly:
-   ```bash
-   node ./node_modules/jsdwa-server/src/index.js
-   ```
+```bash
+# Start with default settings
+jsdwa
+
+# Start with custom port
+jsdwa --port 8080
+
+# Start with caching enabled
+jsdwa --cache
+
+# Start with both options
+jsdwa --port 8080 --cache
+```
+
+Using Node directly:
+```bash
+node ./node_modules/jsdwa-server/src/index.js
+```
 
 ### CLI Options
 
@@ -95,30 +93,6 @@ export default {
 | `templates` | Template path schema |
 | `scripts` | Component scripts path schema |
 | `styles` | Component styles path schema |
-
-### Usage Examples
-
-#### Creating a Web Component
-
-```javascript
-// ref/wc/my-component/tpl.html.js
-export default `
-  <div class="my-component">
-    <h1>{[title]}</h1>
-    <p>{[content]}</p>
-  </div>
-`;
-
-// ref/wc/my-component/index.js
-export default `
-  class MyComponent extends HTMLElement {
-    connectedCallback() {
-      this.innerHTML = \`<my-component>\`;
-    }
-  }
-  customElements.define('my-component', MyComponent);
-`;
-```
 
 #### Defining Routes
 
