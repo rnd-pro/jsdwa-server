@@ -150,7 +150,7 @@ export function createServer(options = {}) {
   return httpServer;
 }
 
-// If this file is run directly (not imported), start the server
-if (import.meta.url === `file://${process.argv[1]}`) {
+// Check if this file is being run directly (not imported)
+if (process.argv[1]?.endsWith('index.js')) {
   createServer();
 }
