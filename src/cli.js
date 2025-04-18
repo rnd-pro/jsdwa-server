@@ -4,10 +4,16 @@ import { createServer } from './JSDWAServer.js';
 
 // Parse command line arguments
 const args = process.argv.slice(2);
-const options = {
-  cache: args.includes('--cache'),
-  port: parseInt(args[args.indexOf('--port') + 1]) || undefined
-};
+let port = parseInt(args[args.indexOf('--port') + 1]);
+let cacheOff = args.includes('--disable-cache');
+let options = {};
+if (port) {
+  options.port = port;
+}
+if (cacheOff) {
+  options.cache = false;
+}
+
 
 // Start the server with the provided options
 createServer(options);

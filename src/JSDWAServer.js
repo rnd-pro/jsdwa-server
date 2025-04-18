@@ -13,7 +13,7 @@ const cache = Object.create(null);
 
 export function createServer(options = {}) {
   // Override CFG with options
-  if (options.cache !== undefined) {
+  if (options.cache) {
     CFG.cache = options.cache;
   }
   if (options.port !== undefined) {
